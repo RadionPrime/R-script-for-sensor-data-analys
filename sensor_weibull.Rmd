@@ -1,0 +1,43 @@
+```{r}
+library(WeibullR) # Load Library
+sensor_data <- read.csv("sensor_data.csv", sep = ";", header=TRUE)
+
+```
+
+
+```{r}
+# WIF Weibull three point anal
+sensor_3p.wblr <- wblr(sensor_data, label="WIF 97222")
+sensor_3p.wblr <- wblr.fit(sensor_3p.wblr, dist="weibull3p", method.fit="rr")
+#sensor_3p.wblr <- wblr.conf(sensor_3p.wblr, col="red")
+plot(sensor_3p.wblr, main = "WIF 97222 Probability PLOT weibull3p")
+
+```
+```{r}
+# WIF Weibull two point anal
+sensor_2p.wblr <- wblr(sensor_data, label="WIF 97222")
+sensor_2p.wblr <- wblr.fit(sensor_2p.wblr, dist="weibull2p", method.fit="rr")
+sensor_2p.wblr <- wblr.conf(sensor_2p.wblr, col="red", dq="minitab")
+plot(sensor_2p.wblr, main = "WIF 97222 Probability PLOT weibull2p")
+```
+```{r}
+# WIF Weibull one point anal
+sensor_1p.wblr <- wblr(sensor_data, label="WIF 97222")
+sensor_1p.wblr <- wblr.fit(sensor_1p.wblr, dist="weibull", method.fit="rr")
+sensor_1p.wblr <- wblr.conf(sensor_1p.wblr, col="red", dq="minitab")
+plot(sensor_1p.wblr, main = "WIF 97222 Probability PLOT weibull")
+```
+```{r}
+# WIF Weibull lognormal
+sensor_lognormal.wblr <- wblr(sensor_data, label="WIF 97222")
+sensor_lognormal.wblr <- wblr.fit(sensor_lognormal.wblr, dist="lognormal", method.fit="rr")
+sensor_lognormal.wblr <- wblr.conf(sensor_lognormal.wblr, col="red", dq="minitab")
+plot(sensor_lognormal.wblr, main = "WIF 97222 Probability PLOT lognomral")
+```
+```{r}
+# WIF Weibull lognormal3p
+sensor_lognormal3p.wblr <- wblr(sensor_data, label="WIF 97222")
+sensor_lognormal3p.wblr <- wblr.fit(sensor_lognormal3p.wblr, dist="lognormal3p", method.fit="rr")
+#sensor_lognormal3p.wblr <- lslr(sensor_lognormal3p.wblr, dist="lnorm", npar=3, reg_method = "YonX")
+plot(sensor_lognormal3p.wblr, main = "WIF 97222 Probability PLOT lognomral3p")
+```
